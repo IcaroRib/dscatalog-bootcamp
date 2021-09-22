@@ -48,7 +48,7 @@ public class Product implements Serializable{
 		this.name = name;
 		this.description = description;
 		this.price = price;
-		this.imgURL = imgURL;
+		this.img_URL = imgURL;
 	}
 
 	public Long getId() {
@@ -83,12 +83,12 @@ public class Product implements Serializable{
 		this.price = price;
 	}
 
-	public String getImgURL() {
-		return imgURL;
+	public String getImg_URL() {
+		return img_URL;
 	}
 
-	public void setImgURL(String imgURL) {
-		this.imgURL = imgURL;
+	public void setImg_URL(String imgURL) {
+		this.img_URL = imgURL;
 	}
 	
 	public Instant getDate() {

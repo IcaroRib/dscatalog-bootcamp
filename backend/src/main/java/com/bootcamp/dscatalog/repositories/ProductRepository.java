@@ -3,10 +3,10 @@ package com.bootcamp.dscatalog.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.bootcamp.dscatalog.entities.Category;
+import com.bootcamp.dscatalog.entities.Product;
 
 @Repository
-public interface CategorygRepository extends JpaRepository<Category, Long>{
+public interface ProductRepository extends JpaRepository<Product, Long>{
 
 	
 }
