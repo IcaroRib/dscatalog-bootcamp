@@ -41,14 +41,14 @@ public class Product implements Serializable{
 	
 	public Product() {
 	}
-	
-	public Product(Long id, String name, String description, Double price, String imgURL) {
-		super();
+
+	public Product(Long id, String name, String description, Double price, String img_URL, Instant date) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
-		this.img_URL = imgURL;
+		this.img_URL = img_URL;
+		this.date = date;
 	}
 
 	public Long getId() {
