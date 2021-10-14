@@ -3,12 +3,17 @@ package com.bootcamp.dscatalog.dto;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import com.bootcamp.dscatalog.entities.Category;
 
 public class CategoryDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	@NotBlank(message = "Campo Obrigatório")
+	@Size(min = 10, max = 100, message = "O campo precisar ter entre 10 e 100 caracteres")
 	private String name;
 	
 	public CategoryDTO() {
