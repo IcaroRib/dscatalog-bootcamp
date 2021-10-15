@@ -10,7 +10,6 @@ import javax.validation.constraints.NotBlank;
 
 import com.bootcamp.dscatalog.entities.User;
 
-
 public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
