@@ -1,7 +1,5 @@
 package com.bootcamp.dscatalog.services.validation;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +28,7 @@ public class UserUpdateValidator implements ConstraintValidator<UserUpdateValid,
 
 	@Override
 	public boolean isValid(UserUpdateDTO dto, ConstraintValidatorContext context) {
+		@SuppressWarnings("unchecked")
 		var uriVars = (Map<String, String>) request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		Long userId = Long.parseLong(uriVars.get("id"));
 		User user = repository.findByEmail(dto.getEmail());
