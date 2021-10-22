@@ -1,6 +1,7 @@
 package com.bootcamp.dscatalog.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,6 +17,15 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 @EnableAuthorizationServer
 public class AuthorizationServeConfig extends AuthorizationServerConfigurerAdapter {
 
+	@Value("${jwt.duration}")
+	private Integer jwtDuration;
+	
+	@Value("${security.oauth2.client.client-id}")
+	private String clientId;
+	
+	@Value("@{security.oauth2.client.client-secret}")
+	private String clientSecret;
+	
 	@Autowired
 	private TokenStore tokenStore;
 	@Autowired
@@ -32,8 +42,8 @@ public class AuthorizationServeConfig extends AuthorizationServerConfigurerAdapt
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient("dscatalog").secret(passwordEncoder.encode("dscatalog123"))
-		.scopes("read", "write").authorizedGrantTypes("password").accessTokenValiditySeconds(86400);
+		clients.inMemory().withClient(clientId).secret(passwordEncoder.encode(clientSecret))
+		.scopes("read", "write").authorizedGrantTypes("password").accessTokenValiditySeconds(jwtDuration);
 	}
 
 	@Override
