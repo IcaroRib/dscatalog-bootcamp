@@ -6,7 +6,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.util.List;
+import java.util.Arrays;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Assertions;
@@ -57,7 +57,7 @@ public class ProductServiceTests {
 		dependenceId = 4L;
 		category = Factory.createdCategory();
 		product = Factory.createdProduct();
-		page = new PageImpl<>(List.of(product));
+		page = new PageImpl<>(Arrays.asList(product));
 		
 		when(repository.getOne(existId)).thenReturn(product);
 		when(repository.getOne(notExistId)).thenThrow(ResourceNotFoundException.class);
