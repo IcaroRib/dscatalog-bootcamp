@@ -1,7 +1,4 @@
 package com.bootcamp.dscatalog.services.validation;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
@@ -24,18 +21,15 @@ public class UserInsertValidator implements ConstraintValidator<UserInsertValid,
 	@Override
 	public boolean isValid(UserInsertDTO dto, ConstraintValidatorContext context) {
 		
-		List<FieldMessage> list = new ArrayList<>();
-		
 		User user = repository.findByEmail(dto.getEmail());
-		if(user != null) {
-			list.add(new FieldMessage("email", "Email Existente"));
-		}
-		
-		for (FieldMessage e : list) {
+		if(user != null ){
+			FieldMessage e = new FieldMessage("email", "Email Existente");
 			context.disableDefaultConstraintViolation();
 			context.buildConstraintViolationWithTemplate(e.getMessage()).addPropertyNode(e.getField())
 					.addConstraintViolation();
+			return false;
+
 		}
-		return list.isEmpty();
+		return true;
 	}
 }
